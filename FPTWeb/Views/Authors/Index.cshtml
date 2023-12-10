@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FPTWeb.Data.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorEmail)
+            </td>
+            <td>
+                    @if (!string.IsNullOrEmpty(item.AuthorPhoto))
+                    {
+                        <img src="/uploads/@Html.DisplayFor(modelItem => item.AuthorPhoto)" alt="user" style="width: 100px; height: 100px">
+                    }
+                    else
+                    {
+                        <p>No photo available</p>
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AuthorId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AuthorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AuthorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
