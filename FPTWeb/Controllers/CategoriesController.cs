@@ -31,7 +31,6 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Categories/Details/5
-        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Categories == null)

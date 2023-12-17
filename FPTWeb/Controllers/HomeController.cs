@@ -43,6 +43,7 @@ namespace FPTWeb.Controllers
 		public IActionResult Index()
 		{
 			var book = _context.Books
+				  .Take(5)
 				  .ToList();
 			return View(book);
 		}
