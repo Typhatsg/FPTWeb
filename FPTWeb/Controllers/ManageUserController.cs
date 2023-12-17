@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace FPTWeb.Controllers
 {
     [Authorize(Roles = "Admin")]
-
     public class ManageUserController : Controller
     {
         private readonly UserManager<FptBookUser> _userManager;
@@ -18,10 +17,26 @@ namespace FPTWeb.Controllers
         }
 
         // Hành động Index để hiển thị danh sách người dùng
-        public IActionResult Index()
+/*        public IActionResult Index()
         {
+
             var users = _userManager.Users.ToList();
+
             return View(users);
+        }*/
+
+        public async Task<IActionResult> Index()
+        {
+            if (User.IsInRole("Admin"))
+            {
+                var adminUsers = await _userManager.GetUsersInRoleAsync("User");
+                return View(adminUsers);
+            }
+            else
+            {
+                var customerUsers = await _userManager.GetUsersInRoleAsync("User");
+                return View(customerUsers);
+            }
         }
 
         // Các hành động khác như Create, Edit, Delete, ...

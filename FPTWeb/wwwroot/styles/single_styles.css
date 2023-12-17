@@ -454,15 +454,15 @@ section
 	display: inline-block;
 	position: relative;
 	min-width: 50px;
-	padding-left: 20px;
+	padding-left: 0	;
 	text-align: center;
 	vertical-align: middle;
-	background: #1e1e27;
+	background-color: #FFFFFF;
 }
 .account > a
 {
 	display: block;
-	color: #b5aec4;
+	color: #FFFFFF;
 	font-weight: 400;
 	height: 50px;
 	line-height: 50px;
@@ -472,60 +472,58 @@ section
 {
 	margin-left: 8px;
 }
-.account:hover .account_selection
-{
-	visibility: visible;
-	opacity: 1;
-	top: 100%;
+.account:hover .account_selection {
+    visibility: visible;
+    opacity: 1;
+    top: 100%;
 }
-.account_selection
-{
-	display: block;
-	position: absolute;
-	right: 0;
-	top: 120%;
-	margin: 0;
-	width: 100%;
-	background: #FFFFFF;
-	visibility: hidden;
-	opacity: 0;
-	z-index: 1;
-	box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
-	-webkit-transition: opacity 0.3s ease;
-	-moz-transition: opacity 0.3s ease;
-	-ms-transition: opacity 0.3s ease;
-	-o-transition: opacity 0.3s ease;
-	transition: all 0.3s ease;
+.account_selection {
+    /* ... (existing styles) ... */
+    text-align: center; /* Center the text within the dropdown */
 }
-.account_selection li
-{
-	padding-left: 10px;
-	padding-right: 10px;
-	line-height: 50px;
+.account_selection {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 120%;
+    margin: 0;
+    width: 200px; /* Adjust the width to your preference */
+    background: #FFFFFF;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
-.account_selection li a
-{
-	display: block;
-	color: #232530;
-	border-bottom: solid 1px #dddddd;
-	font-size: 14px;
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-ms-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+
+.account_selection li {
+    display: inline-block; /* Display list items horizontally */
+    margin: 0 10px; /* Adjust the margin for spacing between items */
 }
-.account_selection li a:hover
-{
-	color: #b5aec4;
+
+.account_selection li a {
+    display: block;
+    color: #232530;
+    font-size: 13px;
+    padding: 10px; /* Add padding for better spacing and clickable area */
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
-.account_selection li:last-child a
-{
-	border-bottom: none;
+.account_selection li a:hover {
+    color: #b5aec4;
 }
-.account_selection li a i
-{
-	margin-right: 10px;
+.account_selection a {
+    padding: 15px;
+}
+.account_selection li:hover {
+    background-color: #f0f0f0;
 }
 
 /*********************************
@@ -1156,10 +1154,6 @@ section
 	margin-top: 66px;
 	margin-bottom: 66px;
 }
-.tabs
-{
-
-}
 .tab
 {
 	margin-right: 50px;
@@ -1189,11 +1183,7 @@ section
 .tab_container
 {
 	width: 100%;
-	display: none;
-}
-.tab_container.active
-{
-	display: block;
+	display: flex;
 }
 
 /*********************************

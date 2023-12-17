@@ -26,7 +26,7 @@ namespace FPTWeb.Data
             var userInDb = await userManager.FindByEmailAsync(user.Email);
             if (userInDb == null)
             {
-                await userManager.CreateAsync(user, "Admin@123");
+                await userManager.CreateAsync(user, "Admin@;123");
                 await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
             }
         }

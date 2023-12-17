@@ -26,7 +26,14 @@
             @Html.DisplayNameFor(model => model.PublisherLogo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PublisherLogo)
+            @if (!string.IsNullOrEmpty(Model.PublisherLogo))
+            {
+                <img src="/uploads/@Html.DisplayFor(model => model.PublisherLogo)" alt="user" style="width: 100px; height: 100px">
+            }
+            else
+            {
+                <p>No photo available</p>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PublisherDetails)
@@ -41,8 +48,4 @@
             @Html.DisplayFor(model => model.FoundingYear)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.PublisherId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>

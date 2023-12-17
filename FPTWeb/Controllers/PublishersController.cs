@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTWeb.Data;
+using FPTWeb.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FPTWeb.Controllers
 {
@@ -19,6 +21,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Publishers
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
               return _context.Publishers != null ? 
@@ -27,6 +30,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Publishers/Details/5
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Publishers == null)
@@ -45,6 +49,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Publishers/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -67,6 +72,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Publishers/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Publishers == null)
@@ -118,6 +124,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Publishers/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Publishers == null)
@@ -153,7 +160,7 @@ namespace FPTWeb.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin")]
         private bool PublisherExists(int id)
         {
           return (_context.Publishers?.Any(e => e.PublisherId == id)).GetValueOrDefault();

@@ -1,7 +1,7 @@
 /* JS Document */
 
 /******************************
-
+ * 
 [Table of Contents]
 
 1. Vars and Inits
@@ -64,7 +64,7 @@ jQuery(document).ready(function($)
 	{
 		if(window.innerWidth < 992)
 		{
-			if($(window).scrollTop() > 100)
+			if($(window).scrollTop() > 200)
 			{
 				header.css({'top':"0"});
 			}
@@ -75,9 +75,9 @@ jQuery(document).ready(function($)
 		}
 		else
 		{
-			if($(window).scrollTop() > 100)
+			if($(window).scrollTop() > 200)
 			{
-				header.css({'top':"-50px"});
+				header.css({'top':"-100px"});
 			}
 			else
 			{
@@ -286,34 +286,4 @@ jQuery(document).ready(function($)
 	}
 
 	/* 
-
-	8. Init Tabs
-
-	*/
-
-	function initTabs()
-	{
-		if($('.tabs').length)
-		{
-			var tabs = $('.tabs li');
-			var tabContainers = $('.tab_container');
-
-			tabs.each(function()
-			{
-				var tab = $(this);
-				var tab_id = tab.data('active-tab');
-
-				tab.on('click', function()
-				{
-					if(!tab.hasClass('active'))
-					{
-						tabs.removeClass('active');
-						tabContainers.removeClass('active');
-						tab.addClass('active');
-						$('#' + tab_id).addClass('active');
-					}
-				});
-			});
-		}
-	}
 });

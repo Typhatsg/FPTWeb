@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FPTWeb.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace FPTWeb.Controllers
 {
@@ -19,6 +22,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Categories
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
               return _context.Categories != null ? 
@@ -27,6 +31,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Categories/Details/5
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Categories == null)
@@ -45,6 +50,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -67,6 +73,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Categories == null)
@@ -118,6 +125,7 @@ namespace FPTWeb.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Categories == null)
@@ -153,7 +161,7 @@ namespace FPTWeb.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin")]
         private bool CategoryExists(int id)
         {
           return (_context.Categories?.Any(e => e.CategoryId == id)).GetValueOrDefault();

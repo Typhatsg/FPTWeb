@@ -832,7 +832,7 @@ section
 }
 .product-item::after
 {
-	display: block;
+	display: flex;
 	position: absolute;
 	top: 0;
 	left: -1px;
